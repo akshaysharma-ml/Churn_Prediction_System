@@ -1,3 +1,4 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import pickle
@@ -6,12 +7,14 @@ import io
 # ---------------------------------------------------------
 # Load pre-trained model and scaler
 # ---------------------------------------------------------
-with open(r"C:\Users\hp\Desktop\ml_mini_project\CHURN.PY\logistic_churn_model.pkl", "rb") as f:
+# ---------------------------------------------------------
+BASE_DIR = Path(__file__).parent
+
+with open(BASE_DIR / "logistic_churn_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-with open(r"C:\Users\hp\Desktop\ml_mini_project\CHURN.PY\scaler.pkl", "rb") as f:
+with open(BASE_DIR / "scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
-
 # ---------------------------------------------------------
 # Streamlit UI Setup
 # ---------------------------------------------------------
